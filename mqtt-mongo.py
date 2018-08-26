@@ -142,7 +142,7 @@ def on_message(client, userdata, msg):
     ## store in database
     try:
         dbid = db_messages.insert_one(dbdata).inserted_id
-        logger.info("MongoDB inserted, id=%s", dbid)
+        logger.debug("MongoDB inserted, id=%s", dbid)
     except Exception as ex:
         logger.error("MongoDB insert error: %s", ex)
 
