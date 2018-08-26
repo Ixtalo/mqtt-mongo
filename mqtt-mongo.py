@@ -119,13 +119,14 @@ def on_message(client, userdata, msg):
     try:
         payload = payload.decode('utf8')
     except Exception as ex:
-        logger.error(ex)
+        logger.warning("Payload decoding problem: %s", ex)
 
     ## try to convert to JSON
     try:
         payload = loads(payload, parse_float=True)
     except Exception as ex:
-        logger.error(ex)
+        ## ignore exception
+        logger.debug("(ignoreable?) payload JSON parsing problem: %s", ex)
 
     ## construct container
     dbdata = {
