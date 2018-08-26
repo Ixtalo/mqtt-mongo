@@ -7,7 +7,7 @@ MONGO_DB = 'test'   ## database name
 
 
 mongo = MongoClient()
-db = mongo[MONGO_DB].messages  ## <MONGO_DB>.messages  (messages collection)
+db_messages = mongo[MONGO_DB].messages  ## <MONGO_DB>.messages  (messages collection)
 
 data = {
     'desc' : 'only for testing',
@@ -17,4 +17,4 @@ data = {
 }
 
 
-print(db.insert_one(data).inserted_id)
+print(db_messages.insert_one(data).inserted_id)
