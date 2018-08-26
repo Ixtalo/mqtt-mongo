@@ -35,14 +35,14 @@ __author__ = "Alexander Streicher"
 __email__ = "ixtalo@gmail.com"
 __copyright__ = "Copyright (C) 2018 Alexander Streicher"
 __license__ = "GPL"
-__version__ = "1.1"
+__version__ = "1.2"
 __date__ = "2018-08-25"
-__updated__ = '2018-08-25'
+__updated__ = '2018-08-26'
 __status__ = "Production"
 
 
+MQTT_SUBSCRIBE_TOPICS = ('#',) ## list of MQTT subscription topics
 MONGO_DB = 'mqtt'   ## database name
-MQTT_SUBSCRIBE_TOPIC = '#' ## MQTT subscription topic
 
 
 ######################################################
@@ -165,11 +165,12 @@ def on_log(client, userdata, level, buf):
 
 
 def subscribe(client):
-    res, mid = client.subscribe(MQTT_SUBSCRIBE_TOPIC)
-    if res == mqtt.MQTT_ERR_SUCCESS:
-        logger.debug("MQTT: subscribed to '%s'", MQTT_SUBSCRIBE_TOPIC)
-    else:
-        logger.warning("MQTT: Could not subscribe to topic '%s'. Result:%s", mqtt.error_string(res))
+    for topic in MQTT_SUBSCRIBE_TOPICS:
+        res, mid = client.subscribe(topic)
+        if res == mqtt.MQTT_ERR_SUCCESS:
+            logger.debug("MQTT: subscribed to '%s'", topic)
+        else:
+            logger.warning("MQTT: Could not subscribe to topic '%s'. Result:%s", mqtt.error_string(res))
 
 
 
