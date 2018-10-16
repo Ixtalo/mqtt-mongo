@@ -130,7 +130,7 @@ def on_message(client, userdata, msg):
 
     ## construct container
     dbdata = {
-        'timestamp': time.time(),
+        'timestamp': time(),
         'topic': msg.topic,
         'payload': payload
     }
