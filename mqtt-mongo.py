@@ -24,7 +24,7 @@ import os
 import signal
 import sys
 from json import loads
-from time import ctime
+from time import ctime, time
 
 import paho.mqtt.client as mqtt
 from docopt import docopt
@@ -34,9 +34,9 @@ __author__ = "Alexander Streicher"
 __email__ = "ixtalo@gmail.com"
 __copyright__ = "Copyright (C) 2018 Alexander Streicher"
 __license__ = "GPL"
-__version__ = "1.2"
+__version__ = "1.3"
 __date__ = "2018-08-25"
-__updated__ = '2018-08-26'
+__updated__ = '2018-10-16'
 __status__ = "Production"
 
 MQTT_SUBSCRIBE_TOPICS = ('#',)  # list of MQTT subscription topics
@@ -130,7 +130,7 @@ def on_message(client, userdata, msg):
 
     ## construct container
     dbdata = {
-        'timestamp': msg.timestamp,
+        'timestamp': time.time(),
         'topic': msg.topic,
         'payload': payload
     }
@@ -286,7 +286,7 @@ if __name__ == "__main__":
         print("---------------- PROFILING -----------------")
         import cProfile
         import pstats
-        profile_filename = 'pydiskdir_profile.txt'
+        profile_filename = 'profile.txt'
         cProfile.run('main()', profile_filename)
         statsfile = open("profile_stats.txt", "wb")
         p = pstats.Stats(profile_filename, stream=statsfile)
