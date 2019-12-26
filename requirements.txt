@@ -1,0 +1,4 @@
+paho-mqtt==1.5
+docopt
+pymongo==3.9.0
+pylint

@@ -1,3 +1,17 @@
 <component name="ProjectDictionaryState">
-  <dictionary name="stc" />
+  <dictionary name="stc">
+    <words>
+      <w>asctime</w>
+      <w>errno</w>
+      <w>levelname</w>
+      <w>loglevel</w>
+      <w>mongo</w>
+      <w>mqtt</w>
+      <w>myname</w>
+      <w>pylint</w>
+      <w>statsfile</w>
+      <w>streicher</w>
+      <w>userdata</w>
+    </words>
+  </dictionary>
 </component>
