@@ -219,7 +219,7 @@ def _setup_logging(verbose=False):
     logger = logging.getLogger(MYNAME)
     console_handler = logging.StreamHandler(stream=sys.stdout)
     console_handler.setFormatter(
-        fmt=logging.Formatter('%(asctime)s - %(levelname)-8s - %(message)s',
+        fmt=logging.Formatter('%(asctime)s - %(levelname)-8s - %(funcName)s:%(lineno)d - %(message)s',
                               datefmt='%Y-%m-%d %H:%M:%S')
     )
     logger.addHandler(console_handler)  # without handler setLevel is not working!
