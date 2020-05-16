@@ -146,7 +146,7 @@ def on_message(client, userdata, msg):
 
     ## try to convert to JSON
     try:
-        payload = loads(payload, parse_float=True)
+        payload = loads(payload, parse_float=float)
     except Exception as ex:
         ## ignore exception
         logger.debug("(ignorable?) payload JSON parsing problem: %s", ex)

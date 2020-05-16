@@ -1,11 +1,10 @@
 [Unit]
 Description=mqtt-mongo
-Requires=mongodb.service
-After=mongodb.service
+After=mongodb.service mosquitto.service
 
 [Service]
 Type=simple
-PIDFile=/var/run/mqtt-mongo.pid
+PIDFile=/run/mqtt-mongo.pid
 ExecStart=/usr/bin/python3 /mnt/data/mydata/mqtt-mongo/mqtt-mongo.py
 
 [Install]
