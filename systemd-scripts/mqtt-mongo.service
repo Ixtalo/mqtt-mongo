@@ -1,0 +1,11 @@
+[Unit]
+Description=mqtt-mongo
+After=mongodb.service mosquitto.service
+
+[Service]
+Type=simple
+PIDFile=/run/mqtt-mongo.pid
+ExecStart=/usr/bin/python3 /mnt/data/mydata/mqtt-mongo/mqtt-mongo.py
+
+[Install]
+WantedBy=multi-user.target
